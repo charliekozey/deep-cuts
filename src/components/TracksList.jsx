@@ -1,6 +1,23 @@
-import React from 'react'
+import Track from './Track'
 
-function TracksList() {
+function TracksList({ tracklist, searchInput }) {
+  console.log("tracklist here:", tracklist)
+
+  // 1. tracklist.map() to return individual tracks: <Track title={title}... />
+  // 2. pass title, artist, etc into track component
+  // 3. save that list to a variable and insert into jsx
+
+  const filteredTracklist = tracklist.filter(track => {
+    // turn search input to lowercase
+    // see if track title OR artist (to lowercase) includes search input
+
+    return track.title.toLowerCase().includes(searchInput.toLowerCase()) || track.title.toLowerCase().includes(searchInput.toLowerCase())
+  })
+
+  const displayTracks = filteredTracklist.map(track => {
+     return <Track title={track.title} artist={track.artist} image={track.image} bpm={track.BPM} key={track.id} />
+  })
+
   return (
     <table>
       <tbody>
@@ -19,7 +36,7 @@ function TracksList() {
             <h3 className="">BPM</h3>
           </th>
         </tr>
-        {/* render a list of <Track> components here */}
+        {displayTracks}
       </tbody>
     </table>
   )
