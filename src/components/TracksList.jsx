@@ -5,7 +5,7 @@ function TracksList({ tracklist, searchInput }) {
 
   // 1. tracklist.map() to return individual tracks: <Track title={title}... />
   // 2. pass title, artist, etc into track component
-  // 3. save that list to a variable and insert into jsx
+  // 3. save list of <Track /> components to a variable and insert into jsx
 
   const filteredTracklist = tracklist.filter(track => {
     // turn search input to lowercase
